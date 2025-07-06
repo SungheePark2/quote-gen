@@ -285,4 +285,44 @@ body::after {
     50% {
         transform: rotate(-5deg) scale(1.1);
     }
+}
+
+/* Buy Me a Coffee 버튼 스타일 */
+.coffee-button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.coffee-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #FFDD00;
+    color: #000000;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.coffee-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background-color: #FFE44D;
+}
+
+.coffee-button:active {
+    transform: translateY(0);
+}
+
+.coffee-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.coffee-button span {
+    line-height: 1;
 } 
