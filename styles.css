@@ -1,0 +1,262 @@
+/* 전체 스타일 초기화 및 기본 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+body {
+    font-family: 'Poppins', 'Noto Sans KR', sans-serif;
+    background: linear-gradient(135deg, #FF9966 0%, #FF5E62 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.6;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 배경 장식 요소 - 파도 */
+body::before {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: 
+        radial-gradient(circle at 30% 50%, #ffffff55 0%, transparent 45%),
+        radial-gradient(circle at 70% 50%, #ffffff55 0%, transparent 45%);
+    background-size: 100px 100px;
+    animation: waveMove 3s ease-in-out infinite alternate;
+    z-index: 1;
+}
+
+/* 배경 장식 요소 - 야자수 */
+body::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    right: 5%;
+    width: 150px;
+    height: 200px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 90V40' stroke='%23654321' stroke-width='6'/%3E%3Cpath d='M30 45c20-20 40-20 40 0' fill='%23228B22' stroke='%23006400' stroke-width='2'/%3E%3Cpath d='M25 35c25-20 45-15 40 5' fill='%23228B22' stroke='%23006400' stroke-width='2'/%3E%3Cpath d='M35 25c20-25 45-20 35 0' fill='%23228B22' stroke='%23006400' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    z-index: 1;
+    transform-origin: bottom;
+    animation: palmSway 5s ease-in-out infinite;
+}
+
+/* 앵무새 애니메이션 */
+.parrot {
+    position: fixed;
+    top: 20%;
+    left: -100px;
+    width: 80px;
+    height: 80px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M30 50c-5-15 0-30 20-30s30 15 20 30z' fill='%23FF1493'/%3E%3Cpath d='M50 50l10-10l15 5l-15 15z' fill='%23FFD700'/%3E%3Ccircle cx='45' cy='35' r='3' fill='%23000'/%3E%3Cpath d='M40 55c0-5 20-5 20 0' fill='none' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    z-index: 2;
+    animation: parrotFly 15s linear infinite;
+}
+
+/* 해변 요소 */
+.beach {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: 
+        radial-gradient(ellipse at 50% 100%, #f4a460 0%, #f4a460 50%, transparent 51%),
+        radial-gradient(ellipse at 30% 100%, #f4a460 0%, #f4a460 40%, transparent 41%),
+        radial-gradient(ellipse at 70% 100%, #f4a460 0%, #f4a460 40%, transparent 41%);
+    z-index: 1;
+}
+
+@keyframes waveMove {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes palmSway {
+    0%, 100% {
+        transform: rotate(-2deg);
+    }
+    50% {
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes parrotFly {
+    0% {
+        transform: translateX(-100px) translateY(0);
+    }
+    25% {
+        transform: translateX(calc(25vw - 100px)) translateY(-50px);
+    }
+    50% {
+        transform: translateX(calc(50vw - 100px)) translateY(0);
+    }
+    75% {
+        transform: translateX(calc(75vw - 100px)) translateY(-50px);
+    }
+    100% {
+        transform: translateX(calc(100vw + 100px)) translateY(0);
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.quote-box {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15),
+                0 5px 15px rgba(255, 94, 98, 0.2);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+}
+
+.quote-box::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    font-size: 150px;
+    color: rgba(255, 153, 102, 0.1);
+    font-family: Georgia, serif;
+}
+
+.quote-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2),
+                0 15px 25px rgba(255, 94, 98, 0.25);
+}
+
+.quote-text {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.quote-text p {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.quote-author {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.quote-author p {
+    font-size: 18px;
+    color: #FF5E62;
+    font-style: italic;
+    font-weight: 400;
+}
+
+#new-quote {
+    background: linear-gradient(45deg, #FF9966, #FF5E62);
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    font-size: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(255, 94, 98, 0.3);
+}
+
+#new-quote:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 94, 98, 0.4);
+    background: linear-gradient(45deg, #FF5E62, #FF9966);
+}
+
+#new-quote:active {
+    transform: translateY(1px);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .quote-box {
+        padding: 30px 20px;
+    }
+    
+    .quote-text p {
+        font-size: 24px;
+    }
+    
+    .quote-author p {
+        font-size: 16px;
+    }
+
+    .quote-box::before {
+        font-size: 100px;
+        top: -10px;
+        left: 10px;
+    }
+
+    body::after {
+        width: 100px;
+        height: 150px;
+        right: 2%;
+    }
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* 물결 효과 애니메이션 */
+@keyframes wave {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+} 
