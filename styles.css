@@ -134,16 +134,6 @@ body::after {
     backdrop-filter: blur(5px);
 }
 
-.quote-box::before {
-    content: '"';
-    position: absolute;
-    top: -20px;
-    left: 20px;
-    font-size: 150px;
-    color: rgba(255, 153, 102, 0.1);
-    font-family: Georgia, serif;
-}
-
 .quote-box:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2),
@@ -177,7 +167,7 @@ body::after {
 }
 
 #new-quote {
-    background: linear-gradient(45deg, #FF9966, #FF5E62);
+    background-color: #3498db;
     color: white;
     border: none;
     padding: 15px 35px;
@@ -188,13 +178,13 @@ body::after {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    box-shadow: 0 5px 15px rgba(255, 94, 98, 0.3);
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
 }
 
 #new-quote:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(255, 94, 98, 0.4);
-    background: linear-gradient(45deg, #FF5E62, #FF9966);
+    background-color: #2980b9;
+    box-shadow: 0 6px 12px rgba(52, 152, 219, 0.4);
 }
 
 #new-quote:active {
@@ -217,12 +207,6 @@ body::after {
     
     .quote-author p {
         font-size: 16px;
-    }
-
-    .quote-box::before {
-        font-size: 100px;
-        top: -10px;
-        left: 10px;
     }
 
     body::after {
@@ -261,56 +245,34 @@ body::after {
     }
 }
 
-/* 바나나 스타일 */
-.banana {
-    position: fixed;
-    width: 50px;
-    height: 50px;
-    pointer-events: none;
-    z-index: 9999;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M20,50 C20,20 40,10 60,10 C80,10 90,30 90,50 C90,70 80,90 60,90 C40,90 20,80 20,50 Z' fill='%23FFE135' stroke='%23DAA520' stroke-width='3'/%3E%3Cpath d='M30,50 C30,30 45,20 60,20 C75,20 80,35 80,50 C80,65 75,80 60,80 C45,80 30,70 30,50 Z' fill='%23FFE135'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    transform-origin: center;
-    transition: transform 0.1s ease;
-    opacity: 0.8;
-    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2));
-    animation: floatBanana 2s ease-in-out infinite;
-}
-
-@keyframes floatBanana {
-    0%, 100% {
-        transform: rotate(-10deg) scale(1);
-    }
-    50% {
-        transform: rotate(-5deg) scale(1.1);
-    }
-}
-
 /* Buy Me a Coffee 버튼 스타일 */
 .coffee-button-container {
-    margin-top: 20px;
+    margin-top: 30px;
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 .coffee-button {
     display: inline-flex;
     align-items: center;
-    padding: 10px 20px;
+    padding: 12px 24px;
     background-color: #FFDD00;
     color: #000000;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 15px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    background: linear-gradient(135deg, #FFDD00 0%, #FFE44D 100%);
 }
 
 .coffee-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    background-color: #FFE44D;
+    background: linear-gradient(135deg, #FFE44D 0%, #FFDD00 100%);
 }
 
 .coffee-button:active {
@@ -318,11 +280,29 @@ body::after {
 }
 
 .coffee-icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
 }
 
 .coffee-button span {
     line-height: 1;
+}
+
+/* 반응형 디자인 수정 */
+@media (max-width: 768px) {
+    .coffee-button-container {
+        margin-top: 20px;
+    }
+    
+    .coffee-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    .coffee-icon {
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+    }
 } 
