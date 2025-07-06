@@ -125,4 +125,36 @@ function displayQuote() {
 newQuoteButton.addEventListener('click', displayQuote);
 
 // 초기 명언 표시
-displayQuote(); 
+displayQuote();
+
+// 바나나 마우스 추적 기능
+const banana = document.querySelector('.banana');
+let mouseX = 0;
+let mouseY = 0;
+let bananaX = 0;
+let bananaY = 0;
+const speed = 0.1; // 바나나의 움직임 속도 (0에서 1 사이, 낮을수록 부드럽게 움직임)
+
+// 마우스 위치 업데이트
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+// 바나나 위치 업데이트 함수
+function updateBananaPosition() {
+    // 현재 바나나 위치에서 목표 위치(마우스 위치)까지 부드럽게 이동
+    bananaX += (mouseX - bananaX - 25) * speed;
+    bananaY += (mouseY - bananaY - 25) * speed;
+    
+    // 바나나 회전 각도 계산 (마우스 이동 방향에 따라)
+    const angle = Math.atan2(mouseY - bananaY, mouseX - bananaX) * 180 / Math.PI;
+    
+    // 바나나 위치와 회전 적용
+    banana.style.transform = `translate(${bananaX}px, ${bananaY}px) rotate(${angle + 90}deg)`;
+    
+    requestAnimationFrame(updateBananaPosition);
+}
+
+// 바나나 애니메이션 시작
+updateBananaPosition(); 
